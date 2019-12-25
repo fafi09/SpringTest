@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fafi.AppTest" time="0.012" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fafi.AppTest" time="0.024" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="CN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="D:\software\Java\jdk1.8.0_111\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefire1225298342280553539\surefirebooter6274519712875739911.jar C:\Users\Administrator\AppData\Local\Temp\surefire1225298342280553539 2019-12-25T15-59-23_519-jvmRun1 surefire8072500805368316052tmp surefire_08876902525013165871tmp"/>
+    <property name="sun.java.command" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefire5115906621805614487\surefirebooter2694058967057893977.jar C:\Users\Administrator\AppData\Local\Temp\surefire5115906621805614487 2019-12-25T16-46-06_719-jvmRun1 surefire8119844954894243680tmp surefire_03711608890281970694tmp"/>
     <property name="surefire.test.class.path" value="D:\ideaws\SpringTest\target\test-classes;D:\ideaws\SpringTest\target\classes;C:\Users\Administrator\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Administrator\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Administrator\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\Administrator\.m2\repository\org\aspectj\aspectjrt\1.6.11\aspectjrt-1.6.11.jar;C:\Users\Administrator\.m2\repository\org\aspectj\aspectjweaver\1.6.8\aspectjweaver-1.6.8.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-core\3.2.12.RELEASE\spring-core-3.2.12.RELEASE.jar;C:\Users\Administrator\.m2\repository\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-expression\3.2.12.RELEASE\spring-expression-3.2.12.RELEASE.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-beans\3.2.12.RELEASE\spring-beans-3.2.12.RELEASE.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-aop\3.2.12.RELEASE\spring-aop-3.2.12.RELEASE.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-context\3.2.12.RELEASE\spring-context-3.2.12.RELEASE.jar;C:\Users\Administrator\.m2\repository\org\springframework\spring-context-support\3.2.12.RELEASE\spring-context-support-3.2.12.RELEASE.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Administrator"/>
@@ -32,7 +32,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefire1225298342280553539\surefirebooter6274519712875739911.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ADMINI~1\AppData\Local\Temp\surefire5115906621805614487\surefirebooter2694058967057893977.jar"/>
     <property name="sun.boot.class.path" value="D:\software\Java\jdk1.8.0_111\jre\lib\resources.jar;D:\software\Java\jdk1.8.0_111\jre\lib\rt.jar;D:\software\Java\jdk1.8.0_111\jre\lib\sunrsasign.jar;D:\software\Java\jdk1.8.0_111\jre\lib\jsse.jar;D:\software\Java\jdk1.8.0_111\jre\lib\jce.jar;D:\software\Java\jdk1.8.0_111\jre\lib\charsets.jar;D:\software\Java\jdk1.8.0_111\jre\lib\jfr.jar;D:\software\Java\jdk1.8.0_111\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

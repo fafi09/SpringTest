@@ -20,6 +20,10 @@ public class App
 //        proxy.doPrint();
 //    }
 
+    /**
+     * https://github.com/fafi09/SpringTest.git
+     * @param args
+     */
     public static void main( String[] args ) {
         ApplicationContext context = new ClassPathXmlApplicationContext("SpringCompensable.xml");
         CaptialService service = (CaptialService) context.getBean(CaptialService.class);

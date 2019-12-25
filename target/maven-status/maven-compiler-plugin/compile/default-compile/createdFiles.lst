@@ -1,10 +1,13 @@
 fafi\annotation\Compensable.class
 fafi\Impl\CaptialServiceImpl.class
 fafi\advice\TimeHandler.class
+fafi\interceptor\ConfigurableOtherAspect.class
 fafi\interceptor\CompensableInterceptor.class
+fafi\interceptor\CompensableOtherInterceptor.class
 fafi\Impl\OrderServiceImpl.class
 fafi\Impl\CaptialService.class
 fafi\interceptor\CompensableAspect.class
 fafi\App.class
 fafi\interceptor\ConfigurableAspect.class
+fafi\interceptor\CompensableOtherAspect.class
 fafi\Impl\OrderService.class

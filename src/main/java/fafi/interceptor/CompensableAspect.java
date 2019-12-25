@@ -13,12 +13,12 @@ public abstract class CompensableAspect {
 
     @Pointcut("@annotation(fafi.annotation.Compensable)")
     public void compensableService() {
-
+        System.out.println("compensableService");
     }
 
     @Around("compensableService()")
     public Object interceptCompensableMethod(ProceedingJoinPoint pjp) throws Throwable {
-
+        System.out.println("interceptCompensableMethod....");
         return compensableInterceptor.interceptCompensableMethod(pjp);
     }
 
