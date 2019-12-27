@@ -10,6 +10,10 @@
     <bean id="compensableOtherAspect" class="fafi.interceptor.ConfigurableOtherAspect"
           init-method="init">
     </bean>
+    <bean id="introductionAspect" class="fafi.interceptor.IntroductionAspect">
+    </bean>
     <bean id="CaptialService" class="fafi.Impl.CaptialServiceImpl">
+    </bean>
+    <bean id="substractService" class="fafi.Impl.SubstractServiceImpl">
     </bean>
 </beans>

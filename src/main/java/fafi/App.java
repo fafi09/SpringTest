@@ -28,5 +28,16 @@ public class App
         ApplicationContext context = new ClassPathXmlApplicationContext("SpringCompensable.xml");
         CaptialService service = (CaptialService) context.getBean(CaptialService.class);
         service.doRecord();
+
+        SubstractService substractService = (SubstractService) context.getBean("substractService");
+        int result = substractService.substract(5,2);
+        System.out.println(result);
+        CheckArithtectArgService checkService = (CheckArithtectArgService) substractService;
+        boolean ret = checkService.checkArithArg(5);
+        if(ret) {
+            System.out.println("check true-------------");
+        } else {
+            System.out.println("check false-------------");
+        }
     }
 }
