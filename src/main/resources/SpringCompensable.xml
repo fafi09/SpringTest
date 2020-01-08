@@ -3,7 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
-        <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--默认为false,使用JDK动态代理 设置为true,启用cglib动态代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <bean id="compensableAspect" class="fafi.interceptor.ConfigurableAspect"
           init-method="init">
     </bean>
@@ -16,4 +17,11 @@
     </bean>
     <bean id="substractService" class="fafi.Impl.SubstractServiceImpl">
     </bean>
+    <bean class="fafi.pojo.User" id="user" init-method="start">
+        <property name="name" value="波波烤鸭" />
+    </bean>
+
+    <!-- 注册处理器 -->
+    <bean class="fafi.processor.MyBeanPostProcessor"></bean>
+    <bean class="fafi.processor.MyBeanPostProcessor2"></bean>
 </beans>
