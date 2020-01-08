@@ -2,8 +2,10 @@ fafi\annotation\Compensable.class
 fafi\Impl\CaptialServiceImpl.class
 fafi\Impl\CheckArithtectArgServiceImpl.class
 fafi\advice\TimeHandler.class
+fafi\processor\MyBeanPostProcessor2.class
 fafi\interceptor\ConfigurableOtherAspect.class
 fafi\interceptor\CompensableInterceptor.class
+fafi\pojo\User.class
 fafi\interceptor\CompensableOtherInterceptor.class
 fafi\Impl\CheckArithtectArgService.class
 fafi\Impl\OrderServiceImpl.class
@@ -14,5 +16,6 @@ fafi\interceptor\ConfigurableAspect.class
 fafi\interceptor\CompensableOtherAspect.class
 fafi\interceptor\IntroductionAspect.class
 fafi\Impl\OrderService.class
+fafi\processor\MyBeanPostProcessor.class
 fafi\Impl\SubstractServiceImpl.class
 fafi\Impl\SubstractService.class

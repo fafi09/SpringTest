@@ -1,12 +1,15 @@
 D:\ideaws\SpringTest\src\main\java\fafi\Impl\OrderService.java
+D:\ideaws\SpringTest\src\main\java\fafi\processor\MyBeanPostProcessor.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\ConfigurableAspect.java
 D:\ideaws\SpringTest\src\main\java\fafi\annotation\Compensable.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\CompensableOtherInterceptor.java
+D:\ideaws\SpringTest\src\main\java\fafi\processor\MyBeanPostProcessor2.java
 D:\ideaws\SpringTest\src\main\java\fafi\Impl\CheckArithtectArgServiceImpl.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\CompensableAspect.java
 D:\ideaws\SpringTest\src\main\java\fafi\Impl\SubstractServiceImpl.java
 D:\ideaws\SpringTest\src\main\java\fafi\advice\TimeHandler.java
 D:\ideaws\SpringTest\src\main\java\fafi\Impl\SubstractService.java
+D:\ideaws\SpringTest\src\main\java\fafi\pojo\User.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\IntroductionAspect.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\CompensableOtherAspect.java
 D:\ideaws\SpringTest\src\main\java\fafi\interceptor\ConfigurableOtherAspect.java
