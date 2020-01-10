@@ -1,5 +1,7 @@
 package fafi;
 import fafi.Impl.*;
+import fafi.hystrix.command.QueryOrderIdCommand;
+import fafi.hystrix.command.QueryOrderIdCommandThread;
 import fafi.pojo.User;
 import fafi.processor.MyBeanPostProcessor;
 import fafi.processor.MyBeanPostProcessor2;
@@ -9,6 +11,10 @@ import org.springframework.cglib.beans.BeanGenerator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.*;
 
 /**
  * Hello world!
@@ -65,9 +71,23 @@ public class App
 //        User user = bf.getBean(User.class);
 //        System.out.println(user);
 //    }
+//    public static void main(String[] args) {
+//        ApplicationContext context = new ClassPathXmlApplicationContext("Spring-redis.xml");
+//        RedisService service = (RedisService) context.getBean(RedisService.class);
+//        service.set("pass","fsd");
+//    }
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Spring-redis.xml");
-        RedisService service = (RedisService) context.getBean(RedisService.class);
-        service.set("pass","fsd");
+        OrderService orderService = new OrderServiceImpl();
+        //Executors.newFixedThreadPool()
+        //ExecutorService service = new ThreadPoolExecutor(10, 50, 1000, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>() );
+
+        QueryOrderIdCommandThread thread = new QueryOrderIdCommandThread(orderService);
+
+        for(int i = 0; i < 50; i++) {
+            //service.execute(thread);
+            Thread t = new Thread(thread);
+            t.start();
+        }
+
     }
 }
