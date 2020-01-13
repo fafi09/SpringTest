@@ -1,4 +1,11 @@
 package fafi;
+import com.netflix.client.ClientException;
+import com.netflix.client.http.HttpRequest;
+import com.netflix.client.http.HttpResponse;
+import com.netflix.config.ConfigurationManager;
+import com.netflix.loadbalancer.ZoneAwareLoadBalancer;
+import com.netflix.niws.client.http.RestClient;
+import com.netflix.client.ClientFactory;
 import fafi.Impl.*;
 import fafi.hystrix.command.QueryOrderIdCommand;
 import fafi.hystrix.command.QueryOrderIdCommandThread;
@@ -12,6 +19,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
+import javax.activation.MailcapCommandMap;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.*;
@@ -76,18 +87,50 @@ public class App
 //        RedisService service = (RedisService) context.getBean(RedisService.class);
 //        service.set("pass","fsd");
 //    }
-    public static void main(String[] args) {
-        OrderService orderService = new OrderServiceImpl();
-        //Executors.newFixedThreadPool()
-        //ExecutorService service = new ThreadPoolExecutor(10, 50, 1000, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>() );
+//    public static void main(String[] args) {
+//        OrderService orderService = new OrderServiceImpl();
+//        //Executors.newFixedThreadPool()
+//        //ExecutorService service = new ThreadPoolExecutor(10, 50, 1000, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>() );
+//
+//        QueryOrderIdCommandThread thread = new QueryOrderIdCommandThread(orderService);
+//
+//        for(int i = 0; i < 50; i++) {
+//            //service.execute(thread);
+//            Thread t = new Thread(thread);
+//            t.start();
+//        }
+//
+//    }
 
-        QueryOrderIdCommandThread thread = new QueryOrderIdCommandThread(orderService);
+    /**
+     * ribbon test
+     * @param args
+     */
+    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException, ClientException {
+        ConfigurationManager.loadPropertiesFromResources("sample-client.properties");
+        System.out.println(ConfigurationManager.getConfigInstance().getProperty("sample-client.ribbon.listOfServers"));
 
-        for(int i = 0; i < 50; i++) {
-            //service.execute(thread);
-            Thread t = new Thread(thread);
-            t.start();
+        RestClient client = (RestClient)ClientFactory.getNamedClient("sample-client");
+        HttpRequest request = HttpRequest.newBuilder().uri(new URI("/")).build();
+
+        for(int i = 0; i < 20; i ++) {
+            HttpResponse response = client.executeWithLoadBalancer(request);
+            System.out.println("Status for URI:" + response.getRequestedURI() + " is :" + response.getStatus());
         }
 
+        ZoneAwareLoadBalancer lb = (ZoneAwareLoadBalancer) client.getLoadBalancer();
+        System.out.println(lb.getLoadBalancerStats());
+
+        ConfigurationManager.getConfigInstance().setProperty("sample-client.ribbon.listOfServers", "www.baidu.com:80,www.linkedin.com:80");
+        client = (RestClient)ClientFactory.getNamedClient("sample-client");
+        System.out.println("changing servers ...");
+        System.out.println(ConfigurationManager.getConfigInstance().getProperty("sample-client.ribbon.listOfServers"));
+        Thread.sleep(3000);
+
+        for(int i = 0; i < 20; i ++) {
+            HttpResponse response = client.executeWithLoadBalancer(request);
+            System.out.println("Status for URI:" + response.getRequestedURI() + " is :" + response.getStatus());
+        }
+        System.out.println(lb.getLoadBalancerStats());
     }
 }
