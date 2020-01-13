@@ -17,6 +17,9 @@ public class QueryOrderIdCommand extends HystrixCommand<Integer> {
                         .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)
                         //HystrixCommand.GetFallback()的最大数量，默认10。超出时将会有异常抛出，注意：该项配置对于THREAD隔离模式也起作用
                         .withFallbackIsolationSemaphoreMaxConcurrentRequests(60)
+                        .withExecutionTimeoutInMilliseconds(1000)
+                        //java.lang.InterruptedException: sleep interrupted 解决
+                        .withExecutionIsolationThreadInterruptOnTimeout(false)
                 //.withExecutionIsolationSemaphoreMaxConcurrentRequests(60)
                 )
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties
@@ -27,6 +30,11 @@ public class QueryOrderIdCommand extends HystrixCommand<Integer> {
 
     @Override
     protected Integer run() throws Exception {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return orderService.add(3,4);
     }
 

@@ -15,15 +15,16 @@ public class QueryOrderIdCommandThread implements Runnable {
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         HystrixCommand<Integer> command = new QueryOrderIdCommand(orderService);
         Integer r = command.execute();
         String method = r == -1 ? "fallback" : "run";
         HystrixProperty<Integer> timeout = command.getProperties().executionTimeoutInMilliseconds();
+
         System.out.println("result:"+ Thread.currentThread().getId()+"---"+method+"----"+r + ":" + command.isCircuitBreakerOpen()+":"+timeout.get());
     }
 }
