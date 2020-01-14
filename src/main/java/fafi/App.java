@@ -2,6 +2,7 @@ package fafi;
 import com.netflix.client.ClientException;
 import com.netflix.client.http.HttpRequest;
 import com.netflix.client.http.HttpResponse;
+import com.netflix.config.ConcurrentCompositeConfiguration;
 import com.netflix.config.ConfigurationManager;
 import com.netflix.loadbalancer.ZoneAwareLoadBalancer;
 import com.netflix.niws.client.http.RestClient;
@@ -13,6 +14,7 @@ import fafi.pojo.User;
 import fafi.processor.MyBeanPostProcessor;
 import fafi.processor.MyBeanPostProcessor2;
 import fafi.redis.service.RedisService;
+import org.apache.commons.configuration.Configuration;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.cglib.beans.BeanGenerator;
 import org.springframework.context.ApplicationContext;
@@ -108,6 +110,7 @@ public class App
      */
     public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException, ClientException {
         ConfigurationManager.loadPropertiesFromResources("sample-client.properties");
+
         System.out.println(ConfigurationManager.getConfigInstance().getProperty("sample-client.ribbon.listOfServers"));
 
         RestClient client = (RestClient)ClientFactory.getNamedClient("sample-client");
@@ -123,7 +126,9 @@ public class App
 
         ConfigurationManager.getConfigInstance().setProperty("sample-client.ribbon.listOfServers", "www.baidu.com:80,www.linkedin.com:80");
 
-        //ConfigurationManager.getConfigInstance().
+        ConcurrentCompositeConfiguration configuration = (ConcurrentCompositeConfiguration) ConfigurationManager.getConfigInstance();
+        Configuration serversConf = configuration.getConfiguration(2);
+        serversConf.setProperty("sample-client.ribbon.listOfServers", "www.baidu.com:80,www.linkedin.com:80");
         //client = (RestClient)ClientFactory.getNamedClient("sample-client");
         System.out.println("changing servers ...");
         System.out.println(ConfigurationManager.getConfigInstance().getProperty("sample-client.ribbon.listOfServers"));
