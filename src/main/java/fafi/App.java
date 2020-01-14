@@ -122,7 +122,9 @@ public class App
         System.out.println(lb.getLoadBalancerStats());
 
         ConfigurationManager.getConfigInstance().setProperty("sample-client.ribbon.listOfServers", "www.baidu.com:80,www.linkedin.com:80");
-        client = (RestClient)ClientFactory.getNamedClient("sample-client");
+
+        //ConfigurationManager.getConfigInstance().
+        //client = (RestClient)ClientFactory.getNamedClient("sample-client");
         System.out.println("changing servers ...");
         System.out.println(ConfigurationManager.getConfigInstance().getProperty("sample-client.ribbon.listOfServers"));
         Thread.sleep(3000);
