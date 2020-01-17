@@ -23,7 +23,9 @@ public class RocketMqConsumer {
              * 订阅指定topic下tags分别等于TagA或TagC或TagD
              * 两个参数：第一个参数是topic第二个参数是tags
              */
-            pushConsumer.subscribe("TopicTest", "TagA || TagC || TagD");
+            //TopicTestSyncProducer
+            //pushConsumer.subscribe("TopicTest", "TagA || TagC || TagD");
+            pushConsumer.subscribe("TopicTestSyncProducer", "TagA || TagC || TagD");
             /**
              * 订阅指定topic下所有消息<br>
              * 注意：一个consumer对象可以订阅多个topic
@@ -46,6 +48,8 @@ public class RocketMqConsumer {
                             System.out.println(new String(messageExt.getBody()));
                         }
                     }else if("TopicTest2".equals(messageExt.getTopic())){
+                        System.out.println(new String(messageExt.getBody()));
+                    }else if("TopicTestSyncProducer".equals(messageExt.getTopic())) {
                         System.out.println(new String(messageExt.getBody()));
                     }
                     return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

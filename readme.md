@@ -121,4 +121,10 @@ sh mqadmin queryMsgById -n 192.168.233.135:9876 -i C0A8E98700002A9F0000000000039
 
 #取得主题状态
 sh mqadmin topicStatus -n 192.168.233.135:9876 -t TopicTestSyncProducer
+
+#查看集群列表
+sh mqadmin clusterList -n 192.168.233.135:9876
+
+#查看broker状态
+sh mqadmin brokerStatus -n 192.168.233.135:9876 -b 192.168.233.135:10911
 ==================
