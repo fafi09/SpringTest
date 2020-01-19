@@ -1,12 +1,15 @@
 SpringCompensable.xml 为aspectj
 SpringConfig.xml 为spring-aop
 
-
+======================
+version:4.0.6
 redis
 ps -ef | grep redis
 ./redis-cli -h 127.0.0.1 -p 6379 shutdown
 ./redis-server ../redis.conf
+=========================
 
+=========================
 ribbon
 出现discoverable via the ServiceLoader错误
 加入下列依赖
@@ -17,6 +20,7 @@ ribbon
     </dependency>
 
 ================
+version:rocketmq-all-4.6.0-bin-release
 启动RocketMq
 启动Name Server
 nohup sh bin/mqnamesrv &
@@ -43,7 +47,10 @@ sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer
  
  #查询消费进程信息
  sh mqadmin  consumerProgress -n 192.168.233.135:9876
- 
+ sh mqadmin consumerProgress -g pullConsumer
+ Broker Offset为生产的条数
+ Consumer Offset为消费的条数
+ Diff为堆积的条数
  #查看主题
  sh mqadmin  topicList -n 192.168.233.135:9876
  
@@ -122,9 +129,22 @@ sh mqadmin queryMsgById -n 192.168.233.135:9876 -i C0A8E98700002A9F0000000000039
 #取得主题状态
 sh mqadmin topicStatus -n 192.168.233.135:9876 -t TopicTestSyncProducer
 
-#查看集群列表
+#查看集群列表 输出集群名称，broker名称，地址
 sh mqadmin clusterList -n 192.168.233.135:9876
 
 #查看broker状态
 sh mqadmin brokerStatus -n 192.168.233.135:9876 -b 192.168.233.135:10911
+
+#查看msg根据offset
+usage: mqadmin queryMsgByOffset -b <arg> [-h] -i <arg> [-n <arg>] -o <arg> -t <arg>
+ -b,--brokerName <arg>    Broker Name
+ -h,--help                Print help
+ -i,--queueId <arg>       Queue Id
+ -n,--namesrvAddr <arg>   Name server address list, eg: 192.168.0.1:9876;192.168.0.2:9876
+ -o,--offset <arg>        Queue Offset
+ -t,--topic <arg>         topic name
+sh mqadmin queryMsgByOffset -t TopicTestAsyncProducer -i 1 -o 2 -n 192.168.233.135:9876 -b bogon
+
+#查看msg body
+cat /tmp/rocketmq/msgbodys/00000000000000000000000000000001000018B4AAC25EB9B2A40001
 ==================

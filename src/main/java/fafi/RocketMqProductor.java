@@ -77,9 +77,10 @@ public class RocketMqProductor {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("AsyncProducer");
         //Launch the instance.
+        producer.setNamesrvAddr("192.168.233.135:9876");
         producer.start();
         producer.setRetryTimesWhenSendAsyncFailed(0);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             final int index = i;
             //Create a message instance, specifying topic, tag and message body.
             Message msg = new Message("TopicTestAsyncProducer",
@@ -99,6 +100,8 @@ public class RocketMqProductor {
                 }
             });
         }
+        //由于是异步的，延迟关闭producer，防止提前关闭
+        Thread.sleep(2000);
         //Shut down once the producer instance is not longer in use.
         producer.shutdown();
     }
